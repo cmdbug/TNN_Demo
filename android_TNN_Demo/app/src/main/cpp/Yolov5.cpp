@@ -56,9 +56,7 @@ YoloV5::YoloV5(std::string proto, std::string model, bool useGPU) {
         status = net->Init(config);
         YoloV5::net = net;
 
-        if (useGPU) {
-            YoloV5::device_type = TNN_NS::DEVICE_OPENCL;
-        }
+        YoloV5::device_type = useGPU ? TNN_NS::DEVICE_OPENCL : TNN_NS::DEVICE_ARM;
 
         TNN_NS::InputShapesMap shapeMap;
         TNN_NS::NetworkConfig network_config;
@@ -68,6 +66,7 @@ YoloV5::YoloV5(std::string proto, std::string model, bool useGPU) {
         if (status != TNN_NS::TNN_OK || !ins) {
             LOGW("GPU initialization failed, switch to CPU");
             // 如果出现GPU加载失败，切换到CPU
+            YoloV5::device_type = TNN_NS::DEVICE_ARM;
             network_config.device_type = TNN_NS::DEVICE_ARM;
             ins = YoloV5::net->CreateInst(network_config, status, shapeMap);
         }
@@ -103,7 +102,7 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
     float scale_w = 1.0f * net_width / image_w;
     float scale_h = 1.0f * net_height / image_h;
     // 原始图片
-    TNN_NS::DeviceType dt = TNN_NS::DEVICE_ARM;
+    TNN_NS::DeviceType dt = YoloV5::device_type;
     TNN_NS::DimsVector image_dims = {1, 4, image_h, image_w};
     auto input_mat = std::make_shared<TNN_NS::Mat>(dt, TNN_NS::N8UC4, image_dims, imageSource);
     // 模型输入
