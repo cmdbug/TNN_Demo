@@ -102,21 +102,27 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
     float scale_w = 1.0f * net_width / image_w;
     float scale_h = 1.0f * net_height / image_h;
     // 原始图片
-    TNN_NS::DeviceType dt = YoloV5::device_type;
+    TNN_NS::DeviceType dt = TNN_NS::DEVICE_ARM;  // 当前数据来源始终位于CPU，不需要设置成OPENCL，tnn自动复制cpu->gpu
     TNN_NS::DimsVector image_dims = {1, 4, image_h, image_w};
     auto input_mat = std::make_shared<TNN_NS::Mat>(dt, TNN_NS::N8UC4, image_dims, imageSource);
     // 模型输入
     TNN_NS::DimsVector target_dims = {1, 4, net_height, net_width};
     auto resize_mat = std::make_shared<TNN_NS::Mat>(dt, TNN_NS::N8UC4, target_dims);
+	// OPENCL需要设置queue
+    void *command_queue = nullptr;
+    auto status = YoloV5::instance->GetCommandQueue(&command_queue);
+    if (status != TNN_NS::TNN_OK) {
+        LOGE("MatUtils::GetCommandQueue Error: %s", status.description().c_str());
+    }
     // 转换大小
     TNN_NS::ResizeParam param;
-    TNN_NS::MatUtils::Resize(*input_mat, *resize_mat, param, nullptr);
+    TNN_NS::MatUtils::Resize(*input_mat, *resize_mat, param, command_queue);
 
     // 输入数据
     TNN_NS::MatConvertParam input_cvt_param;
     input_cvt_param.scale = {1.0 / 255, 1.0 / 255, 1.0 / 255, 0.0};
     input_cvt_param.bias = {0.0, 0.0, 0.0, 0.0};
-    auto status = YoloV5::instance->SetInputMat(resize_mat, input_cvt_param);
+    status = YoloV5::instance->SetInputMat(resize_mat, input_cvt_param);
     if (status != TNN_NS::TNN_OK) {
         LOGE("instance.SetInputMat Error: %s", status.description().c_str());
     }

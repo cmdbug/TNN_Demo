@@ -26,13 +26,17 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 
 JNIEXPORT void JNI_OnUnload(JavaVM *vm, void *reserved) {
-
+	delete YoloV5::detector;
 }
 
 /* ======================================[ YOLOv5 ]======================================*/
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_wzt_tnn_model_YOLOv5_init(JNIEnv *env, jclass clazz, jstring proto, jstring model, jstring path, jboolean use_gpu) {
+	if (YoloV5::detector != nullptr) {
+        delete YoloV5::detector;
+        YoloV5::detector = nullptr;
+    }
     if (YoloV5::detector == nullptr) {
         std::string parentPath = env->GetStringUTFChars(path, 0);
         std::string protoPathStr = parentPath + env->GetStringUTFChars(proto, 0);
@@ -58,7 +62,6 @@ Java_com_wzt_tnn_model_YOLOv5_detect(JNIEnv *env, jclass clazz, jobject bitmap, 
     }
     return ret;
 }
-
 
 
 
