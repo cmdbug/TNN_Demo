@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F46C49025ABFC090051737C /* yolov5s_sim_opt.tnnproto in Resources */ = {isa = PBXBuildFile; fileRef = 5F46C48E25ABFC090051737C /* yolov5s_sim_opt.tnnproto */; };
+		5F46C49125ABFC090051737C /* yolov5s_sim_opt.tnnmodel in Resources */ = {isa = PBXBuildFile; fileRef = 5F46C48F25ABFC090051737C /* yolov5s_sim_opt.tnnmodel */; };
+		5F46C49425ABFC500051737C /* Yolov5.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F46C49325ABFC500051737C /* Yolov5.mm */; };
+		5F46C49725AC03A20051737C /* UIImage+Utility.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F46C49525AC03A20051737C /* UIImage+Utility.mm */; };
+		5F49BA0C25ABF3730049C8A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F49BA0B25ABF3730049C8A3 /* AppDelegate.m */; };
+		5F49BA1225ABF3730049C8A3 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F49BA1125ABF3730049C8A3 /* ViewController.mm */; };
+		5F49BA1525ABF3730049C8A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F49BA1325ABF3730049C8A3 /* Main.storyboard */; };
+		5F49BA1725ABF37C0049C8A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F49BA1625ABF37C0049C8A3 /* Assets.xcassets */; };
+		5F49BA1A25ABF37C0049C8A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F49BA1825ABF37C0049C8A3 /* LaunchScreen.storyboard */; };
+		5F49BA1D25ABF37C0049C8A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F49BA1C25ABF37C0049C8A3 /* main.m */; };
+		5F49BA2525ABF5A10049C8A3 /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F49BA2425ABF5A10049C8A3 /* WelcomeVC.m */; };
+		5F49BA2B25ABF6640049C8A3 /* ELCameraBaseCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F49BA2825ABF6640049C8A3 /* ELCameraBaseCapture.m */; };
+		5F49BA2C25ABF6640049C8A3 /* ELCameraControlCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F49BA2925ABF6640049C8A3 /* ELCameraControlCapture.m */; };
+		5F7F95E025AC2A340059E65F /* tnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7F95DF25AC2A340059E65F /* tnn.framework */; };
+		5F7F95E225AC2A520059E65F /* tnn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F7F95E125AC2A510059E65F /* tnn.bundle */; };
+		5F7F95E525AC2B510059E65F /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7F95E425AC2B510059E65F /* CoreML.framework */; };
+		5F7F95EF25AC33B10059E65F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7F95EE25AC33B10059E65F /* Accelerate.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5F46C48E25ABFC090051737C /* yolov5s_sim_opt.tnnproto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yolov5s_sim_opt.tnnproto; sourceTree = "<group>"; };
+		5F46C48F25ABFC090051737C /* yolov5s_sim_opt.tnnmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov5s_sim_opt.tnnmodel; sourceTree = "<group>"; };
+		5F46C49225ABFC500051737C /* Yolov5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yolov5.h; sourceTree = "<group>"; };
+		5F46C49325ABFC500051737C /* Yolov5.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Yolov5.mm; sourceTree = "<group>"; };
+		5F46C49525AC03A20051737C /* UIImage+Utility.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+Utility.mm"; sourceTree = "<group>"; };
+		5F46C49625AC03A20051737C /* UIImage+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utility.h"; sourceTree = "<group>"; };
+		5F49BA0725ABF3730049C8A3 /* TNNDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNNDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F49BA0A25ABF3730049C8A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5F49BA0B25ABF3730049C8A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5F49BA1025ABF3730049C8A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5F49BA1125ABF3730049C8A3 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		5F49BA1425ABF3730049C8A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5F49BA1625ABF37C0049C8A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F49BA1925ABF37C0049C8A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5F49BA1B25ABF37C0049C8A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F49BA1C25ABF37C0049C8A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5F49BA2325ABF5A10049C8A3 /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
+		5F49BA2425ABF5A10049C8A3 /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
+		5F49BA2725ABF6640049C8A3 /* ELCameraControlCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCameraControlCapture.h; sourceTree = "<group>"; };
+		5F49BA2825ABF6640049C8A3 /* ELCameraBaseCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCameraBaseCapture.m; sourceTree = "<group>"; };
+		5F49BA2925ABF6640049C8A3 /* ELCameraControlCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCameraControlCapture.m; sourceTree = "<group>"; };
+		5F49BA2A25ABF6640049C8A3 /* ELCameraBaseCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCameraBaseCapture.h; sourceTree = "<group>"; };
+		5F7F95DF25AC2A340059E65F /* tnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tnn.framework; sourceTree = "<group>"; };
+		5F7F95E125AC2A510059E65F /* tnn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = tnn.bundle; sourceTree = "<group>"; };
+		5F7F95E425AC2B510059E65F /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		5F7F95EE25AC33B10059E65F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F49BA0425ABF3730049C8A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7F95EF25AC33B10059E65F /* Accelerate.framework in Frameworks */,
+				5F7F95E525AC2B510059E65F /* CoreML.framework in Frameworks */,
+				5F7F95E025AC2A340059E65F /* tnn.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F46C48D25ABFBF60051737C /* res */ = {
+			isa = PBXGroup;
+			children = (
+				5F46C48F25ABFC090051737C /* yolov5s_sim_opt.tnnmodel */,
+				5F46C48E25ABFC090051737C /* yolov5s_sim_opt.tnnproto */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		5F49B9FE25ABF3730049C8A3 = {
+			isa = PBXGroup;
+			children = (
+				5F49BA0925ABF3730049C8A3 /* TNNDemo */,
+				5F49BA0825ABF3730049C8A3 /* Products */,
+				5F7F95E325AC2B510059E65F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5F49BA0825ABF3730049C8A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F49BA0725ABF3730049C8A3 /* TNNDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F49BA0925ABF3730049C8A3 /* TNNDemo */ = {
+			isa = PBXGroup;
+			children = (
+				5F7F95E125AC2A510059E65F /* tnn.bundle */,
+				5F7F95DF25AC2A340059E65F /* tnn.framework */,
+				5F46C48D25ABFBF60051737C /* res */,
+				5F49BA2625ABF6640049C8A3 /* CameraCapture */,
+				5F49BA0A25ABF3730049C8A3 /* AppDelegate.h */,
+				5F49BA0B25ABF3730049C8A3 /* AppDelegate.m */,
+				5F49BA1025ABF3730049C8A3 /* ViewController.h */,
+				5F49BA1125ABF3730049C8A3 /* ViewController.mm */,
+				5F49BA1325ABF3730049C8A3 /* Main.storyboard */,
+				5F49BA1625ABF37C0049C8A3 /* Assets.xcassets */,
+				5F49BA1825ABF37C0049C8A3 /* LaunchScreen.storyboard */,
+				5F49BA1B25ABF37C0049C8A3 /* Info.plist */,
+				5F49BA1C25ABF37C0049C8A3 /* main.m */,
+				5F49BA2325ABF5A10049C8A3 /* WelcomeVC.h */,
+				5F49BA2425ABF5A10049C8A3 /* WelcomeVC.m */,
+				5F46C49625AC03A20051737C /* UIImage+Utility.h */,
+				5F46C49525AC03A20051737C /* UIImage+Utility.mm */,
+				5F46C49325ABFC500051737C /* Yolov5.mm */,
+				5F46C49225ABFC500051737C /* Yolov5.h */,
+			);
+			path = TNNDemo;
+			sourceTree = "<group>";
+		};
+		5F49BA2625ABF6640049C8A3 /* CameraCapture */ = {
+			isa = PBXGroup;
+			children = (
+				5F49BA2725ABF6640049C8A3 /* ELCameraControlCapture.h */,
+				5F49BA2825ABF6640049C8A3 /* ELCameraBaseCapture.m */,
+				5F49BA2925ABF6640049C8A3 /* ELCameraControlCapture.m */,
+				5F49BA2A25ABF6640049C8A3 /* ELCameraBaseCapture.h */,
+			);
+			path = CameraCapture;
+			sourceTree = "<group>";
+		};
+		5F7F95E325AC2B510059E65F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F7F95EE25AC33B10059E65F /* Accelerate.framework */,
+				5F7F95E425AC2B510059E65F /* CoreML.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F49BA0625ABF3730049C8A3 /* TNNDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F49BA2025ABF37C0049C8A3 /* Build configuration list for PBXNativeTarget "TNNDemo" */;
+			buildPhases = (
+				5F49BA0325ABF3730049C8A3 /* Sources */,
+				5F49BA0425ABF3730049C8A3 /* Frameworks */,
+				5F49BA0525ABF3730049C8A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TNNDemo;
+			productName = TNNDemo;
+			productReference = 5F49BA0725ABF3730049C8A3 /* TNNDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F49B9FF25ABF3730049C8A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = TENG;
+				TargetAttributes = {
+					5F49BA0625ABF3730049C8A3 = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = 5F49BA0225ABF3730049C8A3 /* Build configuration list for PBXProject "TNNDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F49B9FE25ABF3730049C8A3;
+			productRefGroup = 5F49BA0825ABF3730049C8A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F49BA0625ABF3730049C8A3 /* TNNDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F49BA0525ABF3730049C8A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F49BA1A25ABF37C0049C8A3 /* LaunchScreen.storyboard in Resources */,
+				5F49BA1725ABF37C0049C8A3 /* Assets.xcassets in Resources */,
+				5F7F95E225AC2A520059E65F /* tnn.bundle in Resources */,
+				5F49BA1525ABF3730049C8A3 /* Main.storyboard in Resources */,
+				5F46C49125ABFC090051737C /* yolov5s_sim_opt.tnnmodel in Resources */,
+				5F46C49025ABFC090051737C /* yolov5s_sim_opt.tnnproto in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F49BA0325ABF3730049C8A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F49BA2C25ABF6640049C8A3 /* ELCameraControlCapture.m in Sources */,
+				5F49BA1225ABF3730049C8A3 /* ViewController.mm in Sources */,
+				5F46C49725AC03A20051737C /* UIImage+Utility.mm in Sources */,
+				5F49BA2B25ABF6640049C8A3 /* ELCameraBaseCapture.m in Sources */,
+				5F46C49425ABFC500051737C /* Yolov5.mm in Sources */,
+				5F49BA0C25ABF3730049C8A3 /* AppDelegate.m in Sources */,
+				5F49BA1D25ABF37C0049C8A3 /* main.m in Sources */,
+				5F49BA2525ABF5A10049C8A3 /* WelcomeVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5F49BA1325ABF3730049C8A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F49BA1425ABF3730049C8A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5F49BA1825ABF37C0049C8A3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F49BA1925ABF37C0049C8A3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5F49BA1E25ABF37C0049C8A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5F49BA1F25ABF37C0049C8A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F49BA2125ABF37C0049C8A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RB5UWYX7Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TNNDemo",
+				);
+				INFOPLIST_FILE = TNNDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"$(PROJECT_DIR)/TNNDemo/tnn.framework/tnn",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.teng.TNNDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+			};
+			name = Debug;
+		};
+		5F49BA2225ABF37C0049C8A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RB5UWYX7Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TNNDemo",
+				);
+				INFOPLIST_FILE = TNNDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"$(PROJECT_DIR)/TNNDemo/tnn.framework/tnn",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.teng.TNNDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F49BA0225ABF3730049C8A3 /* Build configuration list for PBXProject "TNNDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F49BA1E25ABF37C0049C8A3 /* Debug */,
+				5F49BA1F25ABF37C0049C8A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F49BA2025ABF37C0049C8A3 /* Build configuration list for PBXNativeTarget "TNNDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F49BA2125ABF37C0049C8A3 /* Debug */,
+				5F49BA2225ABF37C0049C8A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F49B9FF25ABF3730049C8A3 /* Project object */;
+}

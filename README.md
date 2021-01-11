@@ -3,6 +3,10 @@
 
 ### 移动端TNN部署，摄像头实时捕获视频流进行检测。
 
+## iOS:
+- Xcode 11.5
+- macOS 10.15.4
+- iPhone 6sp 13.5.1
 
 ## Android:
 - Android Studio 4.1.1
@@ -15,11 +19,20 @@
 ```
 从界面中选择需要测试的模型。
 ```
+> iOS
+```
+从界面中选择需要测试的模型。
+```
+
 ### 模型
 | model | android | iOS | from |
 |-------------------|:--------:|:--------:|:--------:|
-| Yolov5s           | yes | no |  [Github](https://github.com/ultralytics/yolov5)   |
+| YOLOv5s           | yes | yes |  [Github](https://github.com/ultralytics/yolov5)   |
 
+### iOS:
+- 如果缺少模型请从 "android_TNN_Demo\app\src\main\assets" 复制 .tnnproto 和 .tnnmodel 文件到 "iOS_TNN_Demo\TNNDemo\res" 下。
+- iOS如果opencv2.framework有用到也需要重新下载并替换到工程。
+- iOS默认使用的库为scripts/build_ios.sh编译生成。
 
 ### Android：
 * 由于手机性能、图像尺寸等因素导致FPS在不同手机上相差比较大。该项目主要测试TNN框架的使用，具体模型的转换可以去TNN官方查看转换教程。<br/>
@@ -33,9 +46,15 @@
 
 > Android
 
-| Yolov5s | xxxxxx | xxxxxx |
+| YOLOv5s | xxxxxx | xxxxxx |
 |-------------------|-------------|---------|
 |<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_yolov5s.jpg"/>| none| none |
+
+> iOS
+
+| YOLOv5s | xxxxxx | xxxxxx |
+|-------------------|-------------|---------|
+| none | none| none |
 
 
 感谢:<br/>
