@@ -46,15 +46,15 @@
 
 > Android
 
-| YOLOv5s | xxxxxx | xxxxxx |
-|-------------------|-------------|---------|
-|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_yolov5s.jpg"/>| none| none |
+| YOLOv5s |
+|-------------------|
+|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_yolov5s.jpg"/>|
 
 > iOS
 
-| YOLOv5s | xxxxxx | xxxxxx |
-|-------------------|-------------|---------|
-| none | none| none |
+| YOLOv5s |
+|-------------------|
+| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> |
 
 
 感谢:<br/>
