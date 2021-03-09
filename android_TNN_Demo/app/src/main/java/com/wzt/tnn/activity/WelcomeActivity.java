@@ -22,10 +22,13 @@ import java.io.InputStream;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    public static final String YOLOV5S_TNN[] = {"yolov5s-permute.tnnproto", "yolov5s.tnnmodel"};
+    public static final String YOLOV5S_TNN[] = {"yolov5s_sim_opt.tnnproto", "yolov5s_sim_opt.tnnmodel"};
+    public static final String NANODET_TNN[] = {"nanodet_sim_opt.tnnproto", "nanodet_sim_opt.tnnmodel"};
+    private static final String[][] models = {YOLOV5S_TNN, NANODET_TNN};
 
     private ToggleButton tbUseGpu;
     private Button btnYOLOv5s;
+    private Button btnNanoDet;
 
     private boolean useGPU = false;
 
@@ -41,10 +44,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
     protected void copyModelFromAssetsToData() {
         // assets目录下的模型文件名
-        String[][] models = {
-                YOLOV5S_TNN
-        };
-
         Toast.makeText(this, "Copy model to data...", Toast.LENGTH_SHORT).show();
         try {
             for (String[] tnn_model : models) {
@@ -63,12 +62,15 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void findView() {
         tbUseGpu = findViewById(R.id.tb_use_gpu);
         btnYOLOv5s = findViewById(R.id.btn_start_detect1);
+        btnNanoDet = findViewById(R.id.btn_start_detect2);
 
         btnYOLOv5s.setEnabled(false);
+        btnNanoDet.setEnabled(false);
     }
 
     private void enableButtons() {
         btnYOLOv5s.setEnabled(true);
+        btnNanoDet.setEnabled(true);
     }
 
     protected void initView() {
@@ -99,6 +101,16 @@ public class WelcomeActivity extends AppCompatActivity {
                 WelcomeActivity.this.startActivity(intent);
             }
         });
+
+        btnNanoDet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.USE_MODEL = MainActivity.NANODET;
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                WelcomeActivity.this.startActivity(intent);
+            }
+        });
+
     }
 
     public void copyAssetDirToFiles(Context context, String dirname) throws IOException {

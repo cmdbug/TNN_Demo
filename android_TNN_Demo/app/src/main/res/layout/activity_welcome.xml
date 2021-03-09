@@ -87,6 +87,14 @@
                 android:textAllCaps="false"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/btn_start_detect2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NanoDet"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toTopOf="@id/btn_start_detect1" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 

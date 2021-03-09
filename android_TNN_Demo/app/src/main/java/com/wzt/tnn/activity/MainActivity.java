@@ -15,10 +15,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.LifecycleOwner;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,15 +24,12 @@ import android.graphics.Canvas;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.util.Size;
 import android.view.TextureView;
 import android.view.View;
@@ -47,13 +42,12 @@ import android.widget.Toast;
 
 import com.wzt.tnn.R;
 import com.wzt.tnn.model.BoxInfo;
+import com.wzt.tnn.model.NanoDet;
 import com.wzt.tnn.model.YOLOv5;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
@@ -64,6 +58,7 @@ import wseemann.media.FFmpegMediaMetadataRetriever;
 
 public class MainActivity extends AppCompatActivity {
     public static int YOLOV5S = 1;
+    public static int NANODET = 2;
 
     public static int USE_MODEL = YOLOV5S;
     public static boolean USE_GPU = false;
@@ -140,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.mipmap.actionbar_dark_back_icon);
         toolbar.setNavigationOnClickListener(v -> finish());
 
-        if (USE_MODEL != YOLOV5S) {
+        if (USE_MODEL != YOLOV5S && USE_MODEL != NANODET) {
             nmsSeekBar.setEnabled(false);
             thresholdSeekBar.setEnabled(false);
             tvNMS.setVisibility(View.GONE);
@@ -148,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             nmsSeekBar.setVisibility(View.GONE);
             thresholdSeekBar.setVisibility(View.GONE);
             tvNMNThreshold.setVisibility(View.GONE);
-        } else if (USE_MODEL == YOLOV5S) {
+        } else if (USE_MODEL == YOLOV5S || USE_MODEL == NANODET) {
             threshold = 0.4f;
             nms_threshold = 0.45f;
         }
@@ -202,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
                             777
                     );
                 } else {
+                    detectPhoto.set(true);
                     Intent intent = new Intent(Intent.ACTION_PICK);
                     intent.setType("image/*");
                     startActivityForResult(intent, REQUEST_PICK_IMAGE);
@@ -220,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
                             777
                     );
                 } else {
+                    detectVideo.set(true);
                     Intent intent = new Intent(Intent.ACTION_PICK);
                     intent.setType("video/*");
                     startActivityForResult(intent, REQUEST_PICK_VIDEO);
@@ -313,6 +310,8 @@ public class MainActivity extends AppCompatActivity {
         String path = this.getFilesDir() + File.separator;
         if (USE_MODEL == YOLOV5S) {
             YOLOv5.init(WelcomeActivity.YOLOV5S_TNN[0], WelcomeActivity.YOLOV5S_TNN[1], path, USE_GPU);
+        } else if (USE_MODEL == NANODET) {
+            NanoDet.init(WelcomeActivity.NANODET_TNN[0], WelcomeActivity.NANODET_TNN[1], path, USE_GPU);
         }
     }
 
@@ -492,13 +491,15 @@ public class MainActivity extends AppCompatActivity {
         BoxInfo[] result = null;
         if (USE_MODEL == YOLOV5S) {
             result = YOLOv5.detect(bitmap, imageDataBytes, bitmap.getWidth(), bitmap.getHeight(), threshold, nms_threshold);
+        } else if (USE_MODEL == NANODET) {
+            result = NanoDet.detect(bitmap, imageDataBytes, bitmap.getWidth(), bitmap.getHeight(), threshold, nms_threshold);
         }
         if (result == null) {
             detectCamera.set(false);
             mutableBitmap = bitmap;
             return bitmap;
         }
-        if (USE_MODEL == YOLOV5S) {
+        if (USE_MODEL == YOLOV5S || USE_MODEL == NANODET) {
             mutableBitmap = drawBoxRects(bitmap, result);
         }
         return mutableBitmap;
@@ -508,6 +509,8 @@ public class MainActivity extends AppCompatActivity {
         String modelName = "ohhhhh";
         if (USE_MODEL == YOLOV5S) {
             modelName = "YOLOv5s";
+        } else if (USE_MODEL == NANODET) {
+            modelName = "NanoDet";
         }
         return USE_GPU ? "[ GPU ] " + modelName : "[ CPU ] " + modelName;
     }

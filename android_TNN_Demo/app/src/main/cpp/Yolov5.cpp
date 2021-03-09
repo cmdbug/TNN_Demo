@@ -64,7 +64,7 @@ YoloV5::YoloV5(std::string proto, std::string model, bool useGPU) {
         network_config.device_type = YoloV5::device_type;
         auto ins = YoloV5::net->CreateInst(network_config, status, shapeMap);
         if (status != TNN_NS::TNN_OK || !ins) {
-            LOGW("GPU initialization failed, switch to CPU");
+            TLOGW("GPU initialization failed, switch to CPU");
             // 如果出现GPU加载失败，切换到CPU
             YoloV5::device_type = TNN_NS::DEVICE_ARM;
             network_config.device_type = TNN_NS::DEVICE_ARM;
@@ -73,7 +73,7 @@ YoloV5::YoloV5(std::string proto, std::string model, bool useGPU) {
         YoloV5::instance = ins;
 
         if (status != TNN_NS::TNN_OK) {
-            LOGE("TNN init failed %d", (int) status);
+            TLOGE("TNN init failed %d", (int) status);
             return;
         }
     }
@@ -112,11 +112,15 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
     void *command_queue = nullptr;
     auto status = YoloV5::instance->GetCommandQueue(&command_queue);
     if (status != TNN_NS::TNN_OK) {
-        LOGE("MatUtils::GetCommandQueue Error: %s", status.description().c_str());
+        TLOGE("MatUtils::GetCommandQueue Error: %s", status.description().c_str());
     }
     // 转换大小
     TNN_NS::ResizeParam param;
-    TNN_NS::MatUtils::Resize(*input_mat, *resize_mat, param, command_queue);
+    param.type = TNN_NS::InterpType::INTERP_TYPE_NEAREST;
+    status = TNN_NS::MatUtils::Resize(*input_mat, *resize_mat, param, command_queue);
+    if (status != TNN_NS::TNN_OK) {
+        TLOGE("MatUtils::Resize Error: %s", status.description().c_str());
+    }
 
     // 输入数据
     TNN_NS::MatConvertParam input_cvt_param;
@@ -124,7 +128,7 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
     input_cvt_param.bias = {0.0, 0.0, 0.0, 0.0};
     status = YoloV5::instance->SetInputMat(resize_mat, input_cvt_param);
     if (status != TNN_NS::TNN_OK) {
-        LOGE("instance.SetInputMat Error: %s", status.description().c_str());
+        TLOGE("instance.SetInputMat Error: %s", status.description().c_str());
     }
 
     // 前向
@@ -132,7 +136,7 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
 //    status = YoloV5::instance->ForwardAsync(callback);
     status = YoloV5::instance->Forward();
     if (status != TNN_NS::TNN_OK) {
-        LOGE("instance.Forward Error: %s", status.description().c_str());
+        TLOGE("instance.Forward Error: %s", status.description().c_str());
     }
 
     // 获取数据
@@ -142,10 +146,10 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
         TNN_NS::MatConvertParam param;
         status = YoloV5::instance->GetOutputMat(output_mat, param, layerData.name);
         if (status != TNN_NS::TNN_OK) {
-            LOGE("instance.GetOutputMat Error: %s", status.description().c_str());
+            TLOGE("instance.GetOutputMat Error: %s", status.description().c_str());
         }
         output_mats.push_back(output_mat);
-//        LOGD("===============> %d %d %d %d", output_mat->GetDims()[0], output_mat->GetDims()[1], output_mat->GetDims()[2], output_mat->GetDims()[3]);
+//        TLOGD("===============> %d %d %d %d", output_mat->GetDims()[0], output_mat->GetDims()[1], output_mat->GetDims()[2], output_mat->GetDims()[3]);
     }
 
     // 后处理
@@ -157,11 +161,11 @@ std::vector<BoxInfo> YoloV5::detect(JNIEnv *env, jobject bitmap, float threshold
         boxInfo.y1 = boxInfo.y1 / scale_h;
         boxInfo.y2 = boxInfo.y2 / scale_h;
     }
-//    LOGD("object size:%ld", results.size());
+//    TLOGD("object size:%ld", results.size());
 
     AndroidBitmap_unlockPixels(env, bitmap);
     if (status != TNN_NS::TNN_OK) {
-        LOGE("get outputmat fail");
+        TLOGE("get outputmat fail");
         return results;
     }
 
@@ -178,7 +182,7 @@ void YoloV5::generateDetectResult(std::vector<std::shared_ptr<TNN_NS::Mat>> outp
 
         detect_dim = dim[3] / num_anchor;
         if (dim[3] != num_anchor * detect_dim) {
-            LOGE("Invalid detect output, the size of last dimension is: %d\n", dim[3]);
+            TLOGE("Invalid detect output, the size of last dimension is: %d\n", dim[3]);
             return;
         }
         auto *data = static_cast<float *>(output->GetData());

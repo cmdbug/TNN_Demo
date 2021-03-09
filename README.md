@@ -28,6 +28,7 @@
 | model | android | iOS | from |
 |-------------------|:--------:|:--------:|:--------:|
 | YOLOv5s           | yes | yes |  [Github](https://github.com/ultralytics/yolov5)   |
+| NanoDet           | yes | todo |  [Github](https://github.com/RangiLyu/nanodet)   |
 
 ### iOS:
 - 如果缺少模型请从 "android_TNN_Demo\app\src\main\assets" 复制 .tnnproto 和 .tnnmodel 文件到 "iOS_TNN_Demo\TNNDemo\res" 下。
@@ -39,22 +40,28 @@
 * 由于opencv库太大只保留 arm64-v8a/armeabi-v7a 有需要其它版本的自己去官方下载。
 * AS版本不一样可能编译会有各种问题，如果编译错误无法解决、建议使用AS4.0以上版本尝试一下。
 
+由于TNN官方还处于开发阶段，不同时间版本可能会出现功能异常或速度差距比较大都是正常的(当前版本功能正常，但速度变慢了)。
+
 懒人本地转换(不会上传模型): [xxxx -> tnn] https://convertmodel.com/
 
 
 :art: 截图<br/>
 
+| Android | iOS |
+|:-----:|:-----:|
+|<img width="324" height="145" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_CPU_or_GPU.jpg"/>| None |
+
 > Android
 
-| YOLOv5s |
-|-------------------|
-|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_yolov5s.jpg"/>|
+| YOLOv5s | NanoDet |
+|---------|---------|
+|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_yolov5s.jpg"/>|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_nanodet.jpg"/>|
 
 > iOS
 
-| YOLOv5s |
-|-------------------|
-| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> |
+| YOLOv5s | NanoDet |
+|---------|---------|
+| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | None |
 
 
 感谢:<br/>
