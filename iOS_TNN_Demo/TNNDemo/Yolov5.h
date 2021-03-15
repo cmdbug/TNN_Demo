@@ -96,4 +96,6 @@ public:
     static bool toUseGPU;
 };
 
+std::shared_ptr<ModelInfo> loadModelToInfo(std::string proto, std::string model);
+
 #endif //YOLOV5S_H

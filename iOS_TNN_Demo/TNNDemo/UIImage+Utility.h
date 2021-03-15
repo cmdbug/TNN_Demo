@@ -33,7 +33,7 @@ std::shared_ptr<char> UIImageGetData(UIImage *image);
  * 1:resize fit the view and keep aspect, empty space may be remained zero
  *  2:resize to fill the view and keep aspect, no empty space remain
  */
-std::shared_ptr<char> UIImageGetData(UIImage *image, int height, int width, int gravity = 0);
+std::shared_ptr<char> UIImageGetData(UIImage *image, int height, int width, int gravity);
 
 UIImage * UIImageCrop(UIImage *image, CGRect rect);
 

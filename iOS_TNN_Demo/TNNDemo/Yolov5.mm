@@ -12,15 +12,17 @@ YoloV5 *YoloV5::detector = nullptr;
 bool YoloV5::hasGPU = true;
 bool YoloV5::toUseGPU = true;
 
-std::shared_ptr<ModelInfo> loadModelToInfo() {
+std::shared_ptr<ModelInfo> loadModelToInfo(std::string proto, std::string model) {
     auto modelInfo = std::make_shared<ModelInfo>();
     
     auto library_bundle_path = [[NSBundle mainBundle] pathForResource:@"tnn" ofType:@"bundle"];
     auto library_bundle = [NSBundle bundleWithPath:library_bundle_path];
     auto library_path = [library_bundle pathForResource:@"tnn" ofType:@"metallib"];
 
-    auto proto_path = [[NSBundle mainBundle] pathForResource:@"yolov5s_sim_opt.tnnproto" ofType:nil];
-    auto model_path = [[NSBundle mainBundle] pathForResource:@"yolov5s_sim_opt.tnnmodel" ofType:nil];
+    NSString *proto_t = [NSString stringWithCString:proto.c_str() encoding:[NSString defaultCStringEncoding]];
+    NSString *model_t = [NSString stringWithCString:model.c_str() encoding:[NSString defaultCStringEncoding]];
+    auto proto_path = [[NSBundle mainBundle] pathForResource:proto_t ofType:nil];
+    auto model_path = [[NSBundle mainBundle] pathForResource:model_t ofType:nil];
     if (proto_path.length <= 0 || model_path.length <= 0) {
         NSLog(@"Error: proto or model path is invalid");
         return modelInfo;
@@ -42,7 +44,7 @@ std::shared_ptr<ModelInfo> loadModelToInfo() {
 YoloV5::YoloV5(bool useGPU) {
     if (YoloV5::net == nullptr) {
         // 加载模型
-        auto modelInfo = loadModelToInfo();
+        auto modelInfo = loadModelToInfo("yolov5s_sim_opt.tnnproto", "yolov5s_sim_opt.tnnmodel");
 
         TNN_NS::Status status;
         TNN_NS::ModelConfig config;

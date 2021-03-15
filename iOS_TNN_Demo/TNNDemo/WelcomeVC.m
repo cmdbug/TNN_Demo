@@ -12,6 +12,7 @@
 @interface WelcomeVC ()
 
 @property (strong, nonatomic) IBOutlet UIButton *btnYolov5s;
+@property (strong, nonatomic) IBOutlet UIButton *btnNanoDet;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *boxView;
@@ -70,7 +71,7 @@
     int offsetY = self.view.bounds.size.width * 0.6f;
     int btnHeight = 35;
     int btnY = 35;
-    int btnCount = 1;
+    int btnCount = 2;
     int i = 0;
     
     self.boxView = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, offsetY + btnHeight * btnCount)];
@@ -87,6 +88,12 @@
     [_btnYolov5s addTarget:self action:@selector(pressYolov5s:) forControlEvents:UIControlEventTouchUpInside];
     [self.boxView addSubview:_btnYolov5s];
     
+    _btnNanoDet = [[UIButton alloc] initWithFrame:CGRectMake(0, offsetY + btnY * i++, btnWidth, btnHeight)];
+    [_btnNanoDet setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_btnNanoDet setTitle:@"NanoDet" forState:UIControlStateNormal];
+    [_btnNanoDet addTarget:self action:@selector(pressNanoDet:) forControlEvents:UIControlEventTouchUpInside];
+    [self.boxView addSubview:_btnNanoDet];
+    
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.contentSize = self.boxView.frame.size;
     [self.scrollView addSubview:self.boxView];
@@ -97,6 +104,13 @@
 - (void)pressYolov5s:(UIButton *)btn {
     ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     vc.USE_MODEL = W_YOLOV5S;
+    vc.USE_GPU = self.useGPU;
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
+- (void)pressNanoDet:(UIButton *)btn {
+    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.USE_MODEL = W_NANODET;
     vc.USE_GPU = self.useGPU;
     [self.navigationController pushViewController:vc animated:NO];
 }

@@ -28,7 +28,7 @@
 | model | android | iOS | from |
 |-------------------|:--------:|:--------:|:--------:|
 | YOLOv5s           | yes | yes |  [Github](https://github.com/ultralytics/yolov5)   |
-| NanoDet           | yes | todo |  [Github](https://github.com/RangiLyu/nanodet)   |
+| NanoDet           | yes | yes |  [Github](https://github.com/RangiLyu/nanodet)   |
 
 ### iOS:
 - 如果缺少模型请从 "android_TNN_Demo\app\src\main\assets" 复制 .tnnproto 和 .tnnmodel 文件到 "iOS_TNN_Demo\TNNDemo\res" 下。
@@ -42,14 +42,15 @@
 
 由于TNN官方还处于开发阶段，不同时间版本可能会出现功能异常或速度差距比较大都是正常的(当前版本功能正常，但速度变慢了)。
 
-懒人本地转换(不会上传模型): [xxxx -> tnn] https://convertmodel.com/
+懒人本地转换(不会上传模型): [xxxx -> tnn](https://convertmodel.com/)
 
+轻量级OpenCV:[opencv-mobile](https://github.com/nihui/opencv-mobile)
 
 :art: 截图<br/>
 
 | Android | iOS |
 |:-----:|:-----:|
-|<img width="324" height="145" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_CPU_or_GPU.jpg"/>| None |
+|<img width="324" height="145" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_CPU_or_GPU.jpg"/>| <img width="320" height="166" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_CPU_or_GPU.jpg"/> |
 
 > Android
 
@@ -61,7 +62,7 @@
 
 | YOLOv5s | NanoDet |
 |---------|---------|
-| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | None |
+| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone5s_nanodet.jpg"/> |
 
 
 感谢:<br/>

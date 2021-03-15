@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define W_YOLOV5S 1
+#define W_NANODET 2
 
 
 @interface ViewController : UIViewController

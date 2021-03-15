@@ -14,7 +14,8 @@
 #include <functional>
 #include <vector>
 
-#include "YoloV5.h"
+#include "Yolov5.h"
+#include "NanoDet.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <AVFoundation/AVMediaFormat.h>
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *preLayer;
 
 @property YoloV5 *yolo;
+@property NanoDet *nanodet;
 
 @property (assign, atomic) Boolean isDetecting;
 @property (assign, atomic) Boolean isPhoto;
@@ -192,11 +194,18 @@
     if (self.USE_MODEL == W_YOLOV5S) {
         self.threshold = 0.3f;
         self.nms_threshold = 0.7f;
+    } else if (self.USE_MODEL == W_NANODET) {
+        self.threshold = 0.4f;
+        self.nms_threshold = 0.6f;
     }
+    [self.thresholdSlider setValue:self.threshold];
+    [self.nmsSlider setValue:self.nms_threshold];
+    NSString *value = [NSString stringWithFormat:@"Threshold:%.2f NMS:%.2f", self.threshold, self.nms_threshold];
+    self.valueShowLabel.text = value;
     
     [self.nmsSlider addTarget:self action:@selector(nmsChange:forEvent:) forControlEvents:UIControlEventValueChanged];
     [self.thresholdSlider addTarget:self action:@selector(nmsChange:forEvent:) forControlEvents:UIControlEventValueChanged];
-    if (self.USE_MODEL != W_YOLOV5S) {
+    if (self.USE_MODEL != W_YOLOV5S && self.USE_MODEL != W_NANODET) {
         self.nmsSlider.enabled = NO;
         self.thresholdSlider.enabled = NO;
     }
@@ -278,10 +287,12 @@
     std::vector<BoxInfo> result;
     if (self.USE_MODEL == W_YOLOV5S) {
         result = self.yolo->detect(image, self.threshold, self.nms_threshold);
+    } else if (self.USE_MODEL == W_NANODET) {
+        result = self.nanodet->detect(image, self.threshold, self.nms_threshold);
     }
     __weak typeof(self) weakSelf = self;
     dispatch_sync(dispatch_get_main_queue(), ^{
-        if (weakSelf.USE_MODEL == W_YOLOV5S) {
+        if (weakSelf.USE_MODEL == W_YOLOV5S || weakSelf.USE_MODEL == W_NANODET) {
             weakSelf.imageView.image = [weakSelf drawBox:weakSelf.imageView image:image boxs:result];
         }
         
@@ -302,12 +313,16 @@
     if (!self.yolo && self.USE_MODEL == W_YOLOV5S) {
         NSLog(@"new YoloV5");
         self.yolo = new YoloV5(self.USE_GPU);
+    } else if (!self.nanodet && self.USE_MODEL == W_NANODET) {
+        NSLog(@"new NanoDet");
+        self.nanodet = new NanoDet(self.USE_GPU);
     }
 }
 
 - (void)releaseModel {
     NSLog(@"release model");
     delete self.yolo;
+    delete self.nanodet;
 }
 
 #pragma mark 获取模型名称
@@ -315,6 +330,8 @@
     NSString *name = @"ohhhhh";
     if (self.USE_MODEL == W_YOLOV5S) {
         name = @"YOLOv5s";
+    } else if (self.USE_MODEL == W_NANODET) {
+        name = @"NanoDet";
     }
     NSString *modelName = self.USE_GPU ? [NSString stringWithFormat:@"[GPU] %@", name] : [NSString stringWithFormat:@"[CPU] %@", name];
     return modelName;
@@ -337,6 +354,8 @@
         NSString *label = nil;
         if (self.USE_MODEL == W_YOLOV5S) {
             label = [NSString stringWithFormat:@"%s %.3f", self.yolo->labels[box.label].c_str(), box.score];
+        } else if (self.USE_MODEL == W_NANODET) {
+            label = [NSString stringWithFormat:@"%s %.3f", self.nanodet->labels[box.label].c_str(), box.score];
         }
         [label drawAtPoint:CGPointMake(box.x1 + 2, box.y1 - 3) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20], NSParagraphStyleAttributeName:style, NSForegroundColorAttributeName:color}];
         
