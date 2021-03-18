@@ -4,8 +4,8 @@
 ### 移动端TNN部署，摄像头实时捕获视频流进行检测。
 
 ## iOS:
-- Xcode 11.5
-- macOS 10.15.4
+- Xcode 12.4
+- macOS 11.2.3
 - iPhone 6sp 13.5.1
 
 ## Android:
@@ -62,7 +62,7 @@
 
 | YOLOv5s | NanoDet |
 |---------|---------|
-| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone5s_nanodet.jpg"/> |
+| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_nanodet.jpg"/> |
 
 
 感谢:<br/>
