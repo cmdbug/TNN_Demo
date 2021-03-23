@@ -50,19 +50,19 @@
 
 | Android | iOS |
 |:-----:|:-----:|
-|<img width="324" height="145" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_CPU_or_GPU.jpg"/>| <img width="320" height="166" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_CPU_or_GPU.jpg"/> |
+|<img width="324" height="145" src="./Screenshots/Android_CPU_or_GPU.jpg"/>| <img width="320" height="166" src="./Screenshots/iOS_CPU_or_GPU.jpg"/> |
 
 > Android
 
 | YOLOv5s | NanoDet |
 |---------|---------|
-|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_yolov5s.jpg"/>|<img width="270" height="500" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/Android_Meizu16x_nanodet.jpg"/>|
+|<img width="270" height="500" src="./Screenshots/Android_Meizu16x_yolov5s.jpg"/>|<img width="270" height="500" src="./Screenshots/Android_Meizu16x_nanodet.jpg"/>|
 
 > iOS
 
 | YOLOv5s | NanoDet |
 |---------|---------|
-| <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | <img width="270" height="480" src="https://github.com/cmdbug/TNN_Demo/blob/main/Screenshots/iOS_iPhone6sp_nanodet.jpg"/> |
+| <img width="270" height="480" src="./Screenshots/iOS_iPhone6sp_yolov5s_gpu.jpg"/> | <img width="270" height="480" src="./Screenshots/iOS_iPhone6sp_nanodet.jpg"/> |
 
 
 感谢:<br/>
