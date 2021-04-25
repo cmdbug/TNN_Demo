@@ -11,7 +11,7 @@
 ## Android:
 - Android Studio 4.1.1
 - Win10 20H2
-- Meizu 16x 8.1.0 (CPU:Qualcomm 710 GPU:Adreno 616)
+- CPU:Qualcomm 710 GPU:Adreno 616
 
 安卓已经增加权限申请，但如果还是闪退请手动确认下相关权限是否允许。
 
@@ -25,10 +25,10 @@
 ```
 
 ### 模型
-| model | android | iOS | from |
-|-------------------|:--------:|:--------:|:--------:|
-| YOLOv5s           | yes | yes |  [Github](https://github.com/ultralytics/yolov5)   |
-| NanoDet           | yes | yes |  [Github](https://github.com/RangiLyu/nanodet)   |
+| model | android | iOS | from | other |
+|-------------------|:--------:|:--------:|:--------:|:--------:|
+| YOLOv5s           | yes | yes |  [Github](https://github.com/ultralytics/yolov5)   | [NCNN](https://github.com/cmdbug/YOLOv5_NCNN) |
+| NanoDet           | yes | yes |  [Github](https://github.com/RangiLyu/nanodet)   | [NCNN](https://github.com/cmdbug/YOLOv5_NCNN) [MNN](https://github.com/cmdbug/MNN_Demo) |
 
 ### iOS:
 - 如果缺少模型请从 "android_TNN_Demo\app\src\main\assets" 复制 .tnnproto 和 .tnnmodel 文件到 "iOS_TNN_Demo\TNNDemo\res" 下。
